@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Artikel Pola Hidup Sehat</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="berita1.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="top">
+            <div class="logo">
+                <img src="logo.png" alt="FINS Logo">
+            </div>
+
+            <div class="profile">
+                <!-- FIX: tambah id -->
+                <img src="img/pengguna.png" class="profile-img" id="profileImg">
+                <p id="usernameDisplay">Nama Pengguna</p>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="pink"><i class="fas fa-house"></i> Home</a></li>
+            <li><a href="tanyaAI.html" class="pink"><i class="fas fa-robot"></i> Tanya AI</a></li>
+            <li><a href="#" class="blue active"><i class="fas fa-newspaper"></i> Artikel</a></li>
+            <li><a href="about.html" class="pink"><i class="fas fa-phone"></i> About Us</a></li>
+        </ul>
+
+        <button class="mode-toggle" id="modeToggle">🌙</button>
+        <a href="login.html" class="login" id="authButton">Login</a>
+
+    </div>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <a href="artikel.html" class="back">← Kembali</a>
+
+        <div class="artikel-detail">
+
+            <div class="artikel-header">
+                <img src="b2.jpeg">
+                <div class="overlay"></div>
+                <h1>Pola Hidup Sehat</h1>
+            </div>
+
+            <p>
+                Dalam kehidupan modern yang serba cepat ini, menjaga kesehatan sering kali menjadi tantangan.
+                Dengan menerapkan pola hidup sehat, kita dapat meningkatkan kualitas hidup secara keseluruhan.
+            </p>
+
+            <h2>1. Apa Itu Pola Hidup Sehat?</h2>
+            <p>
+                Pola hidup sehat adalah kebiasaan sehari-hari yang berdampak positif pada kesehatan fisik,
+                mental, dan emosional. Ini mencakup pola makan, aktivitas fisik, tidur, dan manajemen stres.
+            </p>
+
+            <h2>2. Manfaat Pola Hidup Sehat</h2>
+            <ul>
+                <li>Meningkatkan kesehatan fisik</li>
+                <li>Menjaga kesehatan mental</li>
+                <li>Menambah energi</li>
+                <li>Meningkatkan daya tahan tubuh</li>
+            </ul>
+
+            <h2>3. Cara Menerapkan Pola Hidup Sehat</h2>
+
+            <h3><li>Hindari stres</li></h3>
+            <p>
+                Stres dapat berdampak buruk pada kesehatan. Lakukan relaksasi seperti menarik napas dalam
+                atau melakukan aktivitas yang disukai.
+            </p>
+
+              <h3><li>Pilih makanan sehat</li></liPilih></h3>
+            <p>
+                Konsumsi makanan bergizi seimbang dan hindari makanan berlebihan atau gorengan.
+            </p>
+
+              <h3><li>Olahraga rutin</li></h3>
+            <p>
+                Lakukan aktivitas fisik setiap hari seperti berjalan, bersepeda, atau olahraga ringan lainnya.
+            </p>
+
+              <h3><li>Kurangi gula</li></h3>
+            <p>
+                Terlalu banyak gula dapat menyebabkan diabetes. Mulailah mengurangi konsumsi gula secara bertahap.
+            </p>
+
+              <h3><li>Banyak minum air putih</li></h3>
+            <p>
+                Pastikan tubuh mendapatkan cukup cairan setiap hari agar terhindar dari dehidrasi.
+            </p>
+
+              <h3><li>Cukup tidur</li></h3>
+            <p>
+                Tidur 7–9 jam per malam penting untuk menjaga kesehatan tubuh dan pikiran.
+            </p>
+
+              <h3><li>Hindari kebiasaan buruk</li></h3>
+            <p>
+                Jauhi merokok dan alkohol karena dapat merusak kesehatan.
+            </p>
+
+              <h3><li>aga kebersihan</li></h3>
+            <p>
+                Lingkungan yang bersih membantu mencegah penyakit dan meningkatkan kenyamanan hidup.
+            </p>
+
+              <h3><li>Cek kesehatan rutin</li></h3>
+            <p>
+                Pemeriksaan kesehatan dapat membantu mendeteksi penyakit sejak dini.
+            </p>
+
+              <h3><li>Cuci tangan</li></h3>
+            <p>
+                Menjaga kebersihan tangan penting untuk mencegah penyebaran penyakit.
+            </p>
+
+        </div>
+    </main>
+
+</div>
+
+<!-- SCRIPT LOGIN SYSTEM -->
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+const isLogin = localStorage.getItem("isLogin") === "true";
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const authButton = document.getElementById("authButton");
+const profileImg = document.getElementById("profileImg");
+
+function getInitials(name) {
+    if (!name) return "G";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+        ? parts[0].slice(0,2).toUpperCase()
+        : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function createAvatar(name) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#3b82f6";
+    ctx.fillRect(0,0,128,128);
+
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 60px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(getInitials(name),64,64);
+
+    return canvas.toDataURL();
+}
+
+if (profileImg) {
+    profileImg.src = (isLogin && user) ? createAvatar(user.name) : "img/pengguna.png";
+}
+
+if (isLogin && user) {
+    usernameDisplay.innerText = user.name;
+    authButton.innerText = "Logout";
+
+    authButton.onclick = () => {
+        localStorage.removeItem("isLogin");
+        location.href = "login.html";
+    };
+} else {
+    usernameDisplay.innerText = "Guest";
+    authButton.innerText = "Login";
+
+    authButton.onclick = () => {
+        location.href = "login.html";
+    };
+}
+</script>
+
+
+<script src="darkmode.js"></script>
+
+</body>
+</html>

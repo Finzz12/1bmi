@@ -1,0 +1,266 @@
+:root {
+    --theme-bg: #8bd4fd;
+    --theme-panel: #8bd4fd;
+    --theme-dark: #0f172a;
+    --theme-text: #ffffff;
+    --theme-muted: #94a3b8;
+    --theme-accent: #ff99c1;
+    --theme-border: rgba(255,255,255,0.08);
+
+    --mode-button: #fbbf24;
+    --mode-button-text: #111827;
+}
+
+/* ================= BASE ================= */
+body.dark-theme {
+    background: #050816 !important;
+    color: var(--theme-text) !important;
+}
+
+/* ================= SIDEBAR ================= */
+body.dark-theme .sidebar {
+    background: rgb(32, 36, 37) !important;
+    border-right: 1px solid var(--theme-border);
+}
+
+body.dark-theme .sidebar {
+    background: rgb(32, 36, 37) !important;
+    border-right: 1px solid var(--theme-border);
+}
+
+/* ================= MAIN ================= */
+body.dark-theme .main,
+body.dark-theme .mainn {
+    background: var(--theme-bg) !important;
+}
+
+/* ================= MENU ================= */
+.menu {
+    margin-bottom: 120px;
+}
+
+body.dark-theme .menu a {
+    background: #8bd4fd !important;
+    color: black !important;
+}
+
+body.dark-theme .menu a.pink {
+    background: #ff99c1 !important;
+}
+
+body.dark-theme .menu a.blue {
+    background: #8bd4fd !important;
+}
+
+body.dark-theme .menu a.active {
+    color: black !important;
+}
+
+/* ================= LOGIN ================= */
+body.dark-theme .login {
+    background: #ff99c1 !important;
+    color: black !important;
+}
+
+/* ================= TOGGLE ================= */
+.mode-toggle {
+    position: absolute;
+    bottom: 90px;
+    left: 25px;
+
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--mode-button);
+    color: var(--mode-button-text);
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+/* ================= USERNAME ================= */
+body.dark-theme #usernameDisplay {
+    color: white !important;
+}
+
+/* ================= HERO ================= */
+body.dark-theme .text h1,
+body.dark-theme .text p {
+    color: black !important;
+}
+
+/* ================= BUTTON ================= */
+body.dark-theme button {
+    background: #ff99c1 !important;
+    color: black !important;
+}
+
+/* ================= BOX GLOBAL ================= */
+body.dark-theme .content-box {
+    background: #8bd4fd !important;
+}
+
+/* ================= CARD ================= */
+body.dark-theme .card {
+    background: #ff99c1 !important;
+    color: black !important;
+}
+
+/* ================= CHAT ================= */
+body.dark-theme .chat-container,
+body.dark-theme .chat-box {
+    background: rgb(32, 36, 37) !important;
+    color: white !important;
+}
+
+/* ================= ARTIKEL DETAIL ================= */
+body.dark-theme .artikel-detail {
+    background: #8bd4fd !important;
+   
+}
+
+/* ================= INPUT ================= */
+body.dark-theme input {
+    background: var(--theme-dark) !important;
+    color: white !important;
+    border: 1px solid var(--theme-border);
+}
+
+/* ================= TABLE ================= */
+body.dark-theme table {
+    background: var(--theme-dark) !important;
+}
+
+body.dark-theme th {
+    background: white !important;
+    color: black !important;
+}
+
+body.dark-theme td {
+    color: white !important;
+}
+
+/* ================= ABOUT US (FIX SESUAI PERMINTAAN) ================= */
+
+/* background utama tetap pink-biru */
+body.dark-theme .main {
+    background: rgb(32, 36, 37) !important;
+}
+
+/* HERO tetap pink tapi teks hitam */
+body.dark-theme .about-hero {
+    background: #ff99c1 !important;
+}
+
+body.dark-theme .about-hero h1,
+body.dark-theme .about-hero p {
+    color: white !important;
+}
+
+/* SECTION (yang tadinya putih → jadi gelap) */
+body.dark-theme .section {
+    background: #1e293b !important; /* gelap */
+    color: white !important;
+}
+
+/* judul & isi teks */
+body.dark-theme .section h2,
+body.dark-theme .section h3,
+body.dark-theme .section p {
+    color: white !important;
+}
+
+/* FEATURE CARD */
+body.dark-theme .card-about {
+    background: #ff99c1 !important;
+    color: black !important;
+}
+
+/* TEAM CARD (yang putih → jadi gelap) */
+body.dark-theme .team .card {
+    background: #1e293b !important;
+    color: black !important;
+}
+
+/* IG tetap pink tapi teks hitam */
+body.dark-theme .ig-box {
+    background: #ff99c1 !important;
+}
+
+body.dark-theme .ig {
+    color: black !important;
+}
+
+body.dark-theme .ig-box i {
+    color: black !important;
+}
+
+/* HIGHLIGHT tetap biru */
+body.dark-theme .highlight {
+    background: #8bd4fd !important;
+    color: black !important;
+}
+
+/* ================= BMI PAGE FIX ================= */
+
+/* background utama BMI */
+body.dark-theme .container {
+    background:  #8bd4fd !important;
+}
+
+/* judul + deskripsi BMI */
+body.dark-theme .container h1,
+body.dark-theme .container p {
+    color: black !important;
+}
+
+/* kotak input (tinggi/berat) → BIRU */
+body.dark-theme .input-box {
+    background: #8bd4fd !important;
+    color: black !important;
+}
+
+/* label dalam box */
+body.dark-theme .input-box label,
+body.dark-theme .input-box span {
+    color: black !important;
+}
+
+/* hasil BMI → PINK */
+body.dark-theme .result-box {
+    background: #ff99c1 !important;
+    color: black !important;
+}
+
+/* teks hasil */
+body.dark-theme .result-box p,
+body.dark-theme .result-box span,
+body.dark-theme #bmiValue {
+    color: black !important;
+}
+
+/* AI */
+body.dark-theme .user,
+body.dark-theme .bot {
+    color: black !important;
+}
+
+
+/* ================= ARTIKEL BMI TEXT HITAM ================= */
+
+body.dark-theme .artikel-detail h1,
+body.dark-theme .artikel-detail h2,
+body.dark-theme .artikel-detail p,
+body.dark-theme .artikel-detail li {
+    color: black !important;
+}
+
+body.dark-theme .artikel-detail h3 {
+    color: black !important;
+}
+

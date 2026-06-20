@@ -1,0 +1,228 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* CONTAINER (FIX UTAMA DI SINI) */
+.container {
+  width: 100%;
+  max-width: 600px; /* lebih lebar dari sebelumnya */
+  padding: 10px;
+}
+
+/* BACK */
+.back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  text-decoration: none;
+  color: #ff7fa5;
+  font-weight: bold;
+}
+
+/* TITLE */
+h1 {
+  margin-bottom: 10px;
+  text-align: center;
+  color: #8bd4fd;
+}
+
+.text {
+  margin-bottom: 5px;
+  text-align: center;
+  color: #8bd4fd;
+}
+
+/* ===== GENDER ===== */
+.gender-select {
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.gender-card {
+  flex: 1;
+  background: #f9faff;
+  border-radius: 15px;
+  text-align: center;
+  padding: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gender-card.active {
+  border: 3px solid #333;
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+.gender-card:hover {
+  transform: translateY(-5px);
+}
+
+.gender-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.gender-card p {
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+#male:hover {
+  box-shadow: 0 10px 25px #8bd4fd;
+  transform: translateY(-5px);
+}
+
+#female:hover {
+  box-shadow: 0 10px 25px #ff99c1;
+  transform: translateY(-5px);
+}
+
+/* ===== INPUT BOX ===== */
+.input-box {
+  background: #8bd4fd;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+/* BIAR RAPI */
+.field {
+  margin-bottom: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+}
+
+span {
+  margin-left: 8px;
+  color: white;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* ===== RESULT BOX (PINK) ===== */
+.result-box {
+  margin-top: 15px;
+  background: #ff99c1;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+#infoBox {
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  background: white;
+  text-align: center;
+  color: #8bd4fd;
+ 
+}
+
+#infoBox button {
+  margin-top: 10px;
+  background: #8bd4fd;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.consult-btn {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: #ff99c1;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* HASIL BMI */
+#bmiValue {
+  transition: 0.3s;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* WARNA BMI */
+.kurus { color: #fad43c; }
+.normal { color: #0ea54d; }
+.gemuk { color: #fd477e; }
+.obesitas { color: #da3422; }
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+th {
+  background: #f9faff;
+  color: #8bd4fd;
+  padding: 10px;
+  font-size: 14px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  color: #f9f;
+}
+
+tr:not(:last-child) {
+  border-bottom: 1px solid #8bd4fd;
+}
+
+tr:hover td {
+  background: #f9faff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (min-width: 768px) {
+  .container {
+    max-width: 650px; /* sedikit lebih lebar di desktop */
+  }
+}

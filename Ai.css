@@ -1,0 +1,214 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6fb;
+}
+
+/* LAYOUT */
+.layout {
+    display: flex;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    background: #F9FAFF;
+    padding: 30px 20px;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* LOGO */
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: -30px;   /* naik ke atas */
+    margin-bottom: 5px;
+}
+
+.logo img {
+    width: 150px;   /* ukuran agak gede */
+    height: auto;   /* biar gak gepeng */
+    object-fit: contain;
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 16px;
+}
+
+/* MENU */
+.menu {
+    list-style: none;
+}
+
+.menu li {
+    margin: 10px 0;
+}
+
+.menu a {
+    display: block;
+    padding: 12px;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.menu a:hover,
+.menu a.active {
+    transform: translateX(5px);
+}
+
+/* WARNA */
+.pink {
+    background: #ff99c1;
+}
+
+.blue {
+    background: #8bd4fd;
+}
+
+/* LOGIN */
+.login {
+    text-align: center;
+    padding: 10px;
+    background: #ff99c1;
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+/* CONTENT */
+.content {
+    flex: 1;
+    margin-left: 260px;
+    padding: 40px 30px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CHAT */
+.chat-container {
+    width: 400px;
+    background: #F9FAFF;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0 10px;
+    gap: 12px;
+}
+
+.logo-placeholder,
+.chat-logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-placeholder {
+    background: #8bd4fd;
+    color: #F9FAFF;
+    font-size: 24px;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(74,108,255,0.2);
+}
+
+.chat-logo img {
+    object-fit: cover;
+}
+
+.ai-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: #154b71;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.chat-box {
+    height: 400px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.input-area {
+    display: flex;
+    border-top: 1px solid #F9FAFF;
+}
+
+input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+}
+
+button {
+    background: #8bd4fd;
+    color: #F9FAFF;
+    border: none;
+    padding: 10px;
+}
+
+/* BUBBLE */
+.message {
+    max-width: 70%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+/* BUBBLE FIX */
+.user {
+    background: #ff99c1;
+    color: black; /* ganti dari putih */
+    margin-left: auto;
+}
+
+.bot {
+    background: #8bd4fd;
+    color: black; /* WAJIB tambahin ini */
+}
+

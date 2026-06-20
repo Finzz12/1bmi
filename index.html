@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI UI</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+    <div class="top">
+        <div class="logo">
+            <img src="logo.png" alt="FINS Logo">
+        </div>
+
+        <div class="profile">
+           
+            <img src="logo.png" class="profile-img" id="profileImg">
+            <p id="usernameDisplay">Nama Pengguna</p>
+        </div>
+    </div>
+
+    <ul class="menu">
+        <li><a href="#" class="blue active"><i class="fas fa-house"></i> Home</a></li>
+        <li><a href="tanyaAI.html" class="pink"><i class="fas fa-robot"></i> Tanya AI</a></li>
+        <li><a href="artikel.html" class="pink"><i class="fas fa-newspaper"></i> Artikel</a></li>
+        <li><a href="about.html" class="pink"><i class="fas fa-phone"></i> About Us</a></li>
+    </ul>
+
+    <button class="mode-toggle" id="modeToggle">🌙</button>
+    <a href="login.html" class="login" id="authButton">Login</a>
+
+</div>
+
+<!-- MAIN -->
+<div class="mainn">
+
+    <img src="Apel.png" class="apel">
+
+    <div class="content">
+        <div class="text">
+            <h1>Kalkulator<br>BMI</h1>
+            <p>Cek berat badan ideal kamu dengan Kalkulator BMI</p>
+
+            <a href="bmi.html">
+                <button><h3>hitung bmi</h3></button>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- ================= SCRIPT LOGIN ================= -->
+<script>
+
+// ambil data user
+const user = JSON.parse(localStorage.getItem("user"));
+const isLogin = localStorage.getItem("isLogin") === "true";
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const authButton = document.getElementById("authButton");
+const profileImg = document.getElementById("profileImg");
+
+// ambil inisial nama
+function getInitials(name) {
+    if (!name) return "G";
+
+    const parts = name.trim().split(/\s+/);
+
+    if (parts.length === 1) {
+        return parts[0].substring(0, 2).toUpperCase();
+    }
+
+    return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+// bikin avatar otomatis
+function createAvatarDataURL(name) {
+    const initials = getInitials(name);
+
+    const colors = ['#3b82f6','#ec4899','#60a5fa','#8b5cf6','#22c55e','#fb7185'];
+    const color = colors[name.charCodeAt(0) % colors.length];
+
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+
+    const ctx = canvas.getContext('2d');
+
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 128, 128);
+
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 64px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(initials, 64, 64);
+
+    return canvas.toDataURL();
+}
+
+// SET AVATAR
+if (profileImg) {
+    if (isLogin && user && user.name) {
+        profileImg.src = createAvatarDataURL(user.name);
+    } else {
+        profileImg.src = "img/pengguna.png";
+    }
+}
+
+// SET USERNAME + LOGIN/LOGOUT
+if (isLogin && user) {
+
+    usernameDisplay.innerText = user.name;
+    authButton.innerText = "Logout";
+
+    authButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        localStorage.removeItem("isLogin");
+        window.location.href = "login.html";
+    });
+
+} else {
+
+    usernameDisplay.innerText = "Guest";
+    authButton.innerText = "Login";
+
+    authButton.addEventListener("click", function(e) {
+        e.preventDefault();
+        window.location.href = "login.html";
+    });
+
+}
+
+</script>
+
+<script src="darkmode.js"></script>
+
+</body>
+</html>

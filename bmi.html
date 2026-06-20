@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Kalkulator BMI</title>
+  <link rel="stylesheet" href="bmi-style (1).css">
+    <link rel="stylesheet" href="darkmode.css">
+</head>
+<body>
+
+<a href="index.html" class="back">← Kembali</a>
+<a href="#" class="mode-toggle" id="modeToggle">🌙</a>
+
+<div class="container">
+
+  <h1>Kalkulator BMI</h1>
+  <p class="text">Kalkulator BMI digunakan untuk menghitung Indeks Massa Tubuh (IMT) dan mengecek seberapa ideal berat badanmu. Kamu juga bisa pakai kalkulator ini untuk cek IMT anak, lho.</p>
+
+
+  <!-- GENDER -->
+  <div class="gender-select">
+    <div class="gender-card" id="male">
+      <img src="pria.png">
+      <p>Pria</p>
+    </div>
+    <div class="gender-card" id="female">
+      <img src="wanita.png">
+      <p>Wanita</p>
+    </div>
+  </div>
+
+  <!-- INPUT -->
+  <div class="input-box">
+    <div class="field">
+      <label>Tinggi Badan</label>
+      <div class="input-group">
+        <input type="number" id="height">
+        <span>cm</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Berat Badan</label>
+      <div class="input-group">
+        <input type="number" id="weight">
+        <span>kg</span>
+      </div>
+    </div>
+
+    <button id="calculateBtn">Hitung</button>
+  </div>
+
+  <!-- HASIL + TABEL -->
+  <div class="result-box">
+
+    <div class="bmi-result">
+      <p>BMI anda adalah</p>
+      <h2 id="bmiValue">0 kg/m²</h2>
+    </div>
+
+    <table>
+      <tr>
+        <th>Klasifikasi</th>
+        <th>BMI</th>
+      </tr>
+      <tr>
+        <td>Kurang</td>
+        <td>&lt;18.5</td>
+      </tr>
+      <tr>
+        <td>Normal</td>
+        <td>18.5–22.9</td>
+      </tr>
+      <tr>
+        <td>Gemuk</td>
+        <td>23–24.9</td>
+      </tr>
+      <tr>
+        <td>Obesitas</td>
+        <td>≥25</td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div id="infoBox"></div>
+
+</div>
+
+<script src="script.js"></script>
+<script src="darkmode.js"></script>
+</body>
+</html>

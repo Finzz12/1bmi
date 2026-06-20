@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Artikel BMI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="berita1.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="top">
+          <div class="logo">
+          <img src="logo.png" alt="FINS Logo">
+          </div>
+
+        <div class="profile">
+            <img src="img/pengguna.png" class="profile-img" id="profileImg">
+            <div class="avatar"></div>
+            <p id="usernameDisplay">Nama Pengguna</p>
+        </div>
+    </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="pink"><i class="fas fa-house"></i> Home</a></li>
+            <li><a href="tanyaAI.html" class="pink"><i class="fas fa-robot"></i> Tanya AI</a></li>
+            <li><a href="#" class="blue active"><i class="fas fa-newspaper"></i> Artikel</a></li>
+            <li><a href="about.html" class="pink"><i class="fas fa-phone"></i> About Us</a></li>
+        </ul>
+
+         <button class="mode-toggle" id="modeToggle">🌙</button>
+         <a href="login.html" class="login" id="authButton">Login</a>
+    </div>
+
+    <main class="main">
+     
+         <a href="artikel.html" class="back">← Kembali</a>
+
+        <div class="artikel-detail">
+
+    <!-- HEADER -->
+    <div class="artikel-header">
+        <img src="b4.jpeg">
+        <div class="overlay"></div>
+        <h1>Tips Olahraga untuk Pemula</h1>
+    </div>
+
+    <p>
+        Memulai olahraga setelah lama tidak aktif bisa terasa sulit. Banyak orang bingung harus mulai dari mana dan takut tidak konsisten. Padahal, kunci utama bukan langsung berat, tapi konsisten.
+    </p>
+
+    <h2>1. Bangun Motivasi yang Jelas</h2>
+    <p>
+        Jangan asal mulai. Tentukan tujuan yang realistis, seperti ingin lebih sehat atau meningkatkan stamina. Tanpa tujuan, lo bakal gampang berhenti di tengah jalan.
+    </p>
+
+    <h2>2. Mulai dari Aktivitas Sederhana</h2>
+    <p>
+        Tidak perlu langsung gym. Mulai dari hal kecil seperti jalan kaki, naik tangga, atau bergerak lebih aktif dalam aktivitas harian.
+    </p>
+
+    <h2>3. Lakukan Peregangan</h2>
+    <p>
+        Peregangan penting untuk menghindari cedera dan membuat tubuh lebih fleksibel. Ini sering diremehkan, padahal efeknya besar.
+    </p>
+
+    <h2>4. Fokus Satu Jenis Olahraga</h2>
+    <p>
+        Jangan coba semua sekaligus. Fokus dulu satu jenis olahraga sampai tubuh terbiasa, baru tambah variasi.
+    </p>
+
+    <h2>5. Perhatikan Teknik</h2>
+    <p>
+        Teknik yang salah bisa bikin cedera. Lebih baik pelan tapi benar daripada cepat tapi salah.
+    </p>
+
+    <h2>6. Konsisten Selama 1 Bulan</h2>
+    <p>
+        Target awal bukan hasil, tapi kebiasaan. Fokus konsisten minimal 1 bulan biar tubuh adaptasi.
+    </p>
+
+    <h2>7. Mulai Kardio Ringan</h2>
+    <p>
+        Coba jalan cepat, jogging ringan, atau bersepeda. Jangan langsung intensitas tinggi kalau belum siap.
+    </p>
+
+    <h2>8. Latih Kekuatan Otot</h2>
+    <p>
+        Tambahkan latihan seperti squat, plank, atau push-up untuk memperkuat otot tubuh.
+    </p>
+
+    <h2>9. Ajak Teman</h2>
+    <p>
+        Olahraga sendirian sering bikin bosan. Dengan teman, lo punya dorongan tambahan buat tetap konsisten.
+    </p>
+
+    <h2>Kesimpulan</h2>
+    <p>
+        Olahraga bukan soal cepat atau berat, tapi soal konsistensi. Mulai dari kecil, lakukan rutin, dan tingkatkan perlahan. Kalau lo nunggu “siap”, lo gak akan pernah mulai.
+    </p>
+
+</div>
+    </main>
+</div>
+
+<!-- SCRIPT LOGIN SYSTEM -->
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+const isLogin = localStorage.getItem("isLogin") === "true";
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const authButton = document.getElementById("authButton");
+const profileImg = document.getElementById("profileImg");
+
+function getInitials(name) {
+    if (!name) return "G";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+        ? parts[0].slice(0,2).toUpperCase()
+        : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function createAvatar(name) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#3b82f6";
+    ctx.fillRect(0,0,128,128);
+
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 60px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(getInitials(name),64,64);
+
+    return canvas.toDataURL();
+}
+
+if (profileImg) {
+    profileImg.src = (isLogin && user) ? createAvatar(user.name) : "img/pengguna.png";
+}
+
+if (isLogin && user) {
+    usernameDisplay.innerText = user.name;
+    authButton.innerText = "Logout";
+
+    authButton.onclick = () => {
+        localStorage.removeItem("isLogin");
+        location.href = "login.html";
+    };
+} else {
+    usernameDisplay.innerText = "Guest";
+    authButton.innerText = "Login";
+
+    authButton.onclick = () => {
+        location.href = "login.html";
+    };
+}
+</script>
+
+<script src="darkmode.js"></script>
+
+</body>
+</html>

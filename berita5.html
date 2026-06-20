@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel BMI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="berita1.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+       <div class="top">
+      <div class="logo">
+        <img src="logo.png" alt="FINS Logo">
+      </div>
+
+        <div class="profile">
+            <img src="img/pengguna.png" class="profile-img" id="profileImg"> 
+            <div class="avatar"></div>
+            <p id="usernameDisplay">Nama Pengguna</p>
+        </div>
+    </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="pink"><i class="fas fa-house"></i> Home</a></li>
+            <li><a href="tanyaAI.html" class="pink"><i class="fas fa-robot"></i> Tanya AI</a></li>
+            <li><a href="#" class="blue active"><i class="fas fa-newspaper"></i> Artikel</a></li>
+            <li><a href="about.html" class="pink"><i class="fas fa-phone"></i> About Us</a></li>
+        </ul>
+
+        <button class="mode-toggle" id="modeToggle">🌙</button>
+        <a href="login.html" class="login" id="authButton">Login</a>
+
+    </div>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <a href="artikel.html" class="back">← Kembali</a>
+
+        <div class="artikel-detail">
+
+    <div class="artikel-header">
+        <img src="b5.jpeg">
+        <div class="overlay"></div>
+        <h1>Pentingnya Kualitas Udara bagi Kesehatan Tubuh</h1>
+    </div>
+
+    <p>
+        Kualitas udara yang kita hirup setiap hari memiliki peran yang sangat penting terhadap kesehatan tubuh manusia.
+        Udara bersih membantu sistem pernapasan bekerja dengan lebih optimal, meningkatkan suplai oksigen ke seluruh tubuh,
+        serta mendukung fungsi organ agar tetap sehat dan seimbang. Tanpa udara yang baik, tubuh akan lebih cepat lelah
+        dan rentan terhadap berbagai penyakit.
+    </p>
+
+    <p>
+        Dalam kehidupan modern saat ini, kualitas udara menjadi semakin menurun akibat aktivitas manusia yang terus meningkat.
+        Oleh karena itu, kesadaran untuk menjaga lingkungan sangat diperlukan agar dampak buruk polusi dapat diminimalkan.
+    </p>
+
+    <h2>Dampak Udara Buruk</h2>
+    <p>
+        Ketika seseorang terpapar udara yang tercemar dalam jangka waktu lama, berbagai masalah kesehatan dapat muncul.
+        Mulai dari gangguan pernapasan seperti asma dan bronkitis, hingga iritasi pada mata, hidung, dan tenggorokan.
+        Bahkan, polusi udara juga dapat menurunkan daya tahan tubuh sehingga tubuh lebih mudah terserang penyakit.
+    </p>
+
+    <p>
+        Tidak hanya itu, paparan polusi dalam jangka panjang juga dapat meningkatkan risiko penyakit kronis seperti
+        penyakit jantung dan gangguan paru-paru yang serius. Anak-anak dan lansia menjadi kelompok yang paling rentan
+        terhadap dampak buruk ini.
+    </p>
+
+    <h2>Sumber Polusi Udara</h2>
+    <ul>
+        <li>Asap kendaraan bermotor yang terus meningkat di perkotaan</li>
+        <li>Asap dari pabrik dan aktivitas industri</li>
+        <li>Pembakaran sampah yang tidak terkontrol</li>
+        <li>Debu jalanan dan lingkungan yang tidak terjaga kebersihannya</li>
+        <li>Penggunaan bahan bakar fosil yang berlebihan</li>
+    </ul>
+
+    <h2>Cara Melindungi Diri</h2>
+    <p>
+        Untuk mengurangi dampak buruk polusi udara, ada beberapa langkah sederhana yang bisa dilakukan.
+        Menggunakan masker saat kualitas udara buruk, mengurangi aktivitas di luar ruangan ketika polusi meningkat,
+        serta menanam tanaman hijau di sekitar rumah dapat membantu menyaring udara.
+    </p>
+
+    <p>
+        Selain itu, menjaga kebersihan lingkungan, mengurangi penggunaan kendaraan bermotor,
+        menggunakan transportasi umum, dan mendukung energi ramah lingkungan juga sangat penting untuk dilakukan
+        secara bersama-sama demi kualitas udara yang lebih baik.
+    </p>
+
+    <p>
+        Dengan menjaga kualitas udara di sekitar kita, kesehatan tubuh akan lebih terlindungi,
+        dan generasi masa depan dapat hidup dalam lingkungan yang lebih bersih, segar, dan sehat.
+        Langkah kecil yang dilakukan setiap orang dapat memberikan dampak besar bagi bumi kita.
+    </p>
+
+</div>
+
+    </main>
+
+</div>
+
+<!-- SCRIPT LOGIN SYSTEM -->
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+const isLogin = localStorage.getItem("isLogin") === "true";
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const authButton = document.getElementById("authButton");
+const profileImg = document.getElementById("profileImg");
+
+function getInitials(name) {
+    if (!name) return "G";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+        ? parts[0].slice(0,2).toUpperCase()
+        : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function createAvatar(name) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#3b82f6";
+    ctx.fillRect(0,0,128,128);
+
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 60px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(getInitials(name),64,64);
+
+    return canvas.toDataURL();
+}
+
+if (profileImg) {
+    profileImg.src = (isLogin && user) ? createAvatar(user.name) : "img/pengguna.png";
+}
+
+if (isLogin && user) {
+    usernameDisplay.innerText = user.name;
+    authButton.innerText = "Logout";
+
+    authButton.onclick = () => {
+        localStorage.removeItem("isLogin");
+        location.href = "login.html";
+    };
+} else {
+    usernameDisplay.innerText = "Guest";
+    authButton.innerText = "Login";
+
+    authButton.onclick = () => {
+        location.href = "login.html";
+    };
+}
+</script>
+
+<script src="darkmode.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Artikel - FINS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="artikel.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="top">
+            <div class="logo">
+                <img src="logo.png" alt="FINS Logo">
+            </div>
+
+            <div class="profile">
+                <!-- FIX: tambah id -->
+                <img src="img/pengguna.png" class="profile-img" id="profileImg">
+                <p id="usernameDisplay">Nama Pengguna</p>
+            </div>
+        </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="pink"><i class="fas fa-house"></i> Home</a></li>
+            <li><a href="tanyaAI.html" class="pink"><i class="fas fa-robot"></i> Tanya AI</a></li>
+            <li><a href="#" class="blue active"><i class="fas fa-newspaper"></i> Artikel</a></li>
+            <li><a href="about.html" class="pink"><i class="fas fa-phone"></i> About Us</a></li>
+        </ul>
+
+        <!-- FIX: pakai button -->
+        <button class="mode-toggle" id="modeToggle">🌙</button>
+
+        <a href="login.html" class="login" id="authButton">Login</a>
+
+    </div>
+
+    <!-- MAIN -->
+    <main class="mainn">
+
+        <div class="content-box">
+
+            <!-- SEARCH -->
+            <div class="search-box">
+                 <input type="text" id="searchInput" placeholder="Cari artikel...">
+                 <button onclick="searchArtikel()">🔍</button>
+            </div>
+
+            <!-- ARTIKEL -->
+            <div class="container">
+
+                <article class="card">
+                    <a href="berita1.html" class="card-link">
+                        <img src="bmi.jpeg">
+                        <h3>Body Mass Index (BMI)</h3>
+                        <p>Klik untuk membaca artikel lengkap tentang BMI.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita2.html" class="card-link">
+                        <img src="phs.jpeg">
+                        <h3>Pola Hidup Sehat</h3>
+                        <p>Klik untuk membaca artikel lengkap tentang pola hidup sehat.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita3.html" class="card-link">
+                        <img src="Ds.jpeg">
+                        <h3>Tips Diet Sehat</h3>
+                        <p>Klik untuk membaca artikel lengkap tentang diet sehat.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita4.html" class="card-link">
+                        <img src="Tobp.jpeg">
+                        <h3>Tips Olahraga Bagi Pemula</h3>
+                        <p>Klik untuk membaca artikel lengkap tentang olahraga.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita5.html" class="card-link">
+                        <img src="b5.jpeg">
+                        <h3>Kualitas Udara & Kesehatan</h3>
+                        <p>Klik untuk membaca artikel lengkap.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita6.html" class="card-link">
+                        <img src="olahraga.jpeg">
+                        <h3>Manfaat Olahraga Rutin</h3>
+                        <p>Klik untuk membaca artikel lengkap.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita7.html" class="card-link">
+                        <img src="ns.jpeg">
+                        <h3>Nutrisi Seimbang</h3>
+                        <p>Klik untuk membaca artikel lengkap.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita8.html" class="card-link">
+                        <img src="ks.jpeg">
+                        <h3>Olahraga & Kesehatan</h3>
+                        <p>Klik untuk membaca artikel lengkap.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita9.html" class="card-link">
+                        <img src="pt.jpeg">
+                        <h3>Pentingnya Tidur</h3>
+                        <p>Klik untuk membaca artikel lengkap.</p>
+                    </a>
+                </article>
+
+                <article class="card">
+                    <a href="berita10.html" class="card-link">
+                        <img src="pjs.jpeg">
+                        <h3>Kesehatan Jantung</h3>
+                        <p>Klik untuk membaca artikel lengkap.</p>
+                    </a>
+                </article>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<!-- SCRIPT LOGIN -->
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+const isLogin = localStorage.getItem("isLogin") === "true";
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const authButton = document.getElementById("authButton");
+const profileImg = document.getElementById("profileImg");
+
+function getInitials(name) {
+    if (!name) return "G";
+    const parts = name.trim().split(" ");
+    return parts.length === 1
+        ? parts[0].slice(0,2).toUpperCase()
+        : (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
+}
+
+function createAvatar(name) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#3b82f6";
+    ctx.fillRect(0,0,128,128);
+
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 60px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(getInitials(name),64,64);
+
+    return canvas.toDataURL();
+}
+
+if (profileImg) {
+    profileImg.src = (isLogin && user)
+        ? createAvatar(user.name)
+        : "img/pengguna.png";
+}
+
+if (isLogin && user) {
+    usernameDisplay.innerText = user.name;
+    authButton.innerText = "Logout";
+
+    authButton.onclick = () => {
+        localStorage.removeItem("isLogin");
+        location.href = "login.html";
+    };
+} else {
+    usernameDisplay.innerText = "Guest";
+    authButton.innerText = "Login";
+}
+</script>
+
+<script>
+function searchArtikel() {
+
+    let input = document.getElementById("searchInput").value.toLowerCase();
+
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        let title = card.querySelector("h3").innerText.toLowerCase();
+
+        if(title.includes(input)){
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+}
+</script>
+
+<script src="darkmode.js"></script>
+
+</body>
+</html>

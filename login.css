@@ -1,0 +1,216 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f4ff 0%, #fdf2ff 100%);
+}
+
+.container {
+  position: relative;
+  width: 820px;
+  height: 520px;
+  overflow: hidden;
+  border-radius: 32px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 32px 100px rgba(36, 60, 120, 0.15);
+}
+
+/* Back link */
+.back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    text-decoration: none;
+    color: #ff7fa5;
+    font-weight: bold;
+}
+
+/* FORM */
+.form-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.sign-in {
+  left: 0;
+  z-index: 2;
+  opacity: 1;
+  transform: translateX(0) perspective(1200px) rotateY(0deg);
+  pointer-events: auto;
+}
+
+.sign-up {
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  transform: translateX(100%) scale(0.98) perspective(1200px) rotateY(-12deg);
+  pointer-events: none;
+}
+
+.container.active .sign-in {
+  opacity: 0;
+  transform: translateX(-100%) scale(0.96) perspective(1200px) rotateY(12deg);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.container.active .sign-up {
+  opacity: 1;
+  transform: translateX(0) scale(1) perspective(1200px) rotateY(0deg);
+  pointer-events: auto;
+  z-index: 2;
+}
+
+form {
+  min-height: 100%;
+  background: linear-gradient(145deg, #6b9dd6 0%, #4d7bbf 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 52px;
+  border-radius: 0 0 0 32px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+}
+
+form h2 {
+  margin-bottom: 10px;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+
+input {
+  padding: 16px 18px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+button {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ff85a9 0%, #ff637b 100%);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 18px 32px rgba(255, 99, 123, 0.24);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 36px rgba(255, 99, 123, 0.3);
+}
+
+/* OVERLAY */
+.overlay-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 52%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), width 0.9s ease;
+}
+
+.form-container {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+  transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #ff9cb8 0%, #ffbac8 55%, #ffdfec 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+  transform: translateX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1), background 0.7s ease;
+}
+
+.container.active .overlay-container {
+  transform: translateX(-14%);
+  width: 58%;
+}
+
+.container.active .overlay {
+  background: linear-gradient(120deg, #689eff 0%, #6dc1ff 55%, #bef0ff 100%);
+  transform: translateX(-18%);
+}
+
+.overlay-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 44px;
+  transition: opacity 0.7s ease, transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.overlay-panel.left {
+  left: 0;
+  transform: translateX(-16%) scale(0.96);
+  opacity: 1;
+}
+
+.overlay-panel.right {
+  right: 0;
+  transform: translateX(16%) scale(0.96);
+  opacity: 0.8;
+}
+
+.container.active .overlay-panel.left {
+  transform: translateX(-6%) scale(0.98);
+  opacity: 0.8;
+}
+
+.container.active .overlay-panel.right {
+  transform: translateX(6%) scale(0.98);
+  opacity: 1;
+}
+
+.overlay-panel h2 {
+  margin-bottom: 18px;
+  font-size: 1.95rem;
+}
+
+.overlay-panel button {
+  background: rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.overlay-panel button:hover {
+  background: rgba(255, 255, 255, 0.28);
+  transform: scale(1.02);
+}
+

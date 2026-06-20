@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Artikel BMI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="berita1.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+       <div class="top">
+      <div class="logo">
+        <img src="logo.png" alt="FINS Logo">
+      </div>
+
+        <div class="profile">
+            <img src="img/pengguna.png" class="profile-img" id="profileImg">
+            <div class="avatar"></div>
+            <p id="usernameDisplay">Nama Pengguna</p>
+        </div>
+    </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="pink"><i class="fas fa-house"></i> Home</a></li>
+            <li><a href="tanyaAI.html" class="pink"><i class="fas fa-robot"></i> Tanya AI</a></li>
+            <li><a href="#" class="blue active"><i class="fas fa-newspaper"></i> Artikel</a></li>
+            <li><a href="about.html" class="pink"><i class="fas fa-phone"></i> About Us</a></li>
+        </ul>
+
+       <button class="mode-toggle" id="modeToggle">🌙</button>
+        <a href="login.html" class="login" id="authButton">Login</a>
+
+    </div>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <a href="artikel.html" class="back">← Kembali</a>
+
+      <div class="artikel-detail">
+
+    <div class="artikel-header">
+        <img src="b9.jpeg">
+        <div class="overlay"></div>
+        <h1>Pentingnya Tidur yang Cukup untuk Kesehatan dan Kebugaran</h1>
+    </div>
+
+    <p>
+        Tidur yang cukup merupakan salah satu faktor penting dalam menjaga kesehatan dan kebugaran tubuh.
+        Saat tidur, tubuh melakukan proses pemulihan, memperbaiki sel-sel yang rusak, dan mengembalikan energi
+        yang digunakan selama beraktivitas seharian.
+    </p>
+
+    <p>
+        Kurang tidur dapat berdampak buruk bagi tubuh, seperti menurunnya konsentrasi, mudah lelah,
+        hingga melemahnya sistem kekebalan tubuh. Oleh karena itu, kualitas tidur tidak boleh diabaikan.
+    </p>
+
+    <h2>Manfaat Tidur yang Cukup</h2>
+    <p>
+        Tidur yang cukup membantu meningkatkan daya tahan tubuh, menjaga kesehatan jantung,
+        serta memperbaiki suasana hati. Selain itu, tidur yang berkualitas juga berperan penting
+        dalam meningkatkan daya ingat dan kemampuan berpikir.
+    </p>
+
+    <p>
+        Bagi mereka yang aktif berolahraga, tidur yang cukup membantu mempercepat pemulihan otot
+        dan meningkatkan performa fisik secara keseluruhan.
+    </p>
+
+    <h2>Dampak Kurang Tidur</h2>
+    <ul>
+        <li>Mudah merasa lelah dan mengantuk di siang hari</li>
+        <li>Menurunnya fokus dan konsentrasi</li>
+        <li>Meningkatkan risiko stres dan gangguan emosi</li>
+        <li>Menurunnya sistem kekebalan tubuh</li>
+        <li>Produktivitas sehari-hari menjadi terganggu</li>
+    </ul>
+
+    <h2>Cara Mendapatkan Tidur Berkualitas</h2>
+    <p>
+        Untuk mendapatkan tidur yang berkualitas, biasakan tidur dan bangun pada waktu yang sama setiap hari.
+        Hindari penggunaan gadget sebelum tidur karena dapat mengganggu kualitas istirahat.
+    </p>
+
+    <p>
+        Selain itu, ciptakan suasana kamar yang nyaman, tenang, dan gelap agar tubuh lebih mudah beristirahat
+        dengan optimal.
+    </p>
+
+    <h2>Kesimpulan</h2>
+    <p>
+        Tidur yang cukup adalah bagian penting dari gaya hidup sehat.
+        Dengan pola tidur yang baik, tubuh akan menjadi lebih segar, bugar, dan siap menjalani aktivitas sehari-hari dengan maksimal.
+    </p>
+
+</div>
+    </main>
+
+</div>
+
+<!-- SCRIPT LOGIN SYSTEM -->
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+const isLogin = localStorage.getItem("isLogin") === "true";
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const authButton = document.getElementById("authButton");
+const profileImg = document.getElementById("profileImg");
+
+function getInitials(name) {
+    if (!name) return "G";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+        ? parts[0].slice(0,2).toUpperCase()
+        : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function createAvatar(name) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#3b82f6";
+    ctx.fillRect(0,0,128,128);
+
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 60px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(getInitials(name),64,64);
+
+    return canvas.toDataURL();
+}
+
+if (profileImg) {
+    profileImg.src = (isLogin && user) ? createAvatar(user.name) : "img/pengguna.png";
+}
+
+if (isLogin && user) {
+    usernameDisplay.innerText = user.name;
+    authButton.innerText = "Logout";
+
+    authButton.onclick = () => {
+        localStorage.removeItem("isLogin");
+        location.href = "login.html";
+    };
+} else {
+    usernameDisplay.innerText = "Guest";
+    authButton.innerText = "Login";
+
+    authButton.onclick = () => {
+        location.href = "login.html";
+    };
+}
+</script>
+
+<script src="darkmode.js"></script>
+
+</body>
+</html>

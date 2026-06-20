@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Artikel BMI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="berita1.css">
+    <link rel="stylesheet" href="darkmode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="top">
+          <div class="logo">
+          <img src="logo.png" alt="FINS Logo">
+          </div>
+
+        <div class="profile">
+           <img src="img/pengguna.png" class="profile-img" id="profileImg">
+            <div class="avatar"></div>
+            <p id="usernameDisplay">Nama Pengguna</p>
+        </div>
+    </div>
+
+        <ul class="menu">
+            <li><a href="index.html" class="pink"><i class="fas fa-house"></i> Home</a></li>
+            <li><a href="tanyaAI.html" class="pink"><i class="fas fa-robot"></i> Tanya AI</a></li>
+            <li><a href="#" class="blue active"><i class="fas fa-newspaper"></i> Artikel</a></li>
+            <li><a href="about.html" class="pink"><i class="fas fa-phone"></i> About Us</a></li>
+        </ul>
+
+       <button class="mode-toggle" id="modeToggle">🌙</button>
+        <a href="login.html" class="login" id="authButton">Login</a>
+
+    </div>
+
+    <main class="main">
+     
+         <a href="artikel.html" class="back">← Kembali</a>
+
+        <div class="artikel-detail">
+
+            <!-- HEADER -->
+            <div class="artikel-header">
+                <img src="b3.jpeg">
+                <div class="overlay"></div>
+                <h1>Diet Sehat</h1>
+            </div>
+
+    <p>
+        Diet sehat melibatkan pemilihan makanan bergizi, pengaturan porsi, jadwal makan teratur,
+        hidrasi cukup, dan mindful eating untuk menurunkan berat badan secara aman dan berkelanjutan.
+    </p>
+
+    <h2>1. Pilih Makanan Bergizi</h2>
+    <p>
+        Konsumsi makanan kaya nutrisi seperti sayuran hijau, buah-buahan, protein tanpa lemak
+        (ikan, ayam tanpa kulit, tahu, tempe), dan biji-bijian utuh.
+    </p>
+    <p>
+        Hindari makanan olahan, gorengan, camilan kemasan, dan minuman tinggi gula karena dapat
+        menghambat penurunan berat badan.
+    </p>
+
+    <h2>2. Atur Porsi dan Jadwal Makan</h2>
+    <p>
+        Makan dengan porsi sesuai dan tidak berlebihan sangat penting. Idealnya makan 3–6 kali sehari
+        dengan porsi kecil agar metabolisme tetap aktif.
+    </p>
+    <ul>
+        <li>Bagi piring: sayur, buah, protein, karbohidrat</li>
+        <li>Jangan lewatkan sarapan</li>
+    </ul>
+
+    <h2>3. Perbanyak Serat dan Protein</h2>
+    <p>
+        Serat membantu kenyang lebih lama, sedangkan protein membantu membangun otot
+        dan membakar lemak.
+    </p>
+    <ul>
+        <li>Serat: buah, sayur, kacang-kacangan</li>
+        <li>Protein: telur, ikan, daging tanpa lemak</li>
+    </ul>
+
+    <h2>4. Hidrasi yang Cukup</h2>
+    <p>
+        Minum air putih minimal 6–8 gelas per hari penting untuk metabolisme dan membantu
+        mengontrol rasa lapar.
+    </p>
+
+    <h2>5. Mindful Eating</h2>
+    <p>
+        Fokus saat makan, nikmati setiap suapan, dan hindari distraksi seperti HP atau TV.
+    </p>
+    <p>
+        Terapkan prinsip <b>80:20</b> yaitu 80% makanan sehat dan 20% makanan favorit.
+    </p>
+
+    <h2>6. Motivasi dan Dukungan</h2>
+    <p>
+        Tentukan tujuan diet, buat jadwal makan dan olahraga, serta cari dukungan dari teman
+        agar tetap konsisten.
+    </p>
+
+    <h2>Kesimpulan</h2>
+    <p>
+        Dengan menerapkan pola diet sehat secara konsisten, berat badan dapat turun secara bertahap,
+        tubuh lebih bugar, dan kesehatan jangka panjang lebih terjaga.
+    </p>
+
+        </div>
+    </main>
+</div>
+
+<!-- SCRIPT LOGIN SYSTEM -->
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+const isLogin = localStorage.getItem("isLogin") === "true";
+
+const usernameDisplay = document.getElementById("usernameDisplay");
+const authButton = document.getElementById("authButton");
+const profileImg = document.getElementById("profileImg");
+
+function getInitials(name) {
+    if (!name) return "G";
+    const parts = name.trim().split(/\s+/);
+    return parts.length === 1
+        ? parts[0].slice(0,2).toUpperCase()
+        : (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+function createAvatar(name) {
+    const canvas = document.createElement("canvas");
+    canvas.width = 128;
+    canvas.height = 128;
+    const ctx = canvas.getContext("2d");
+
+    ctx.fillStyle = "#3b82f6";
+    ctx.fillRect(0,0,128,128);
+
+    ctx.fillStyle = "#fff";
+    ctx.font = "bold 60px Arial";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(getInitials(name),64,64);
+
+    return canvas.toDataURL();
+}
+
+if (profileImg) {
+    profileImg.src = (isLogin && user) ? createAvatar(user.name) : "img/pengguna.png";
+}
+
+if (isLogin && user) {
+    usernameDisplay.innerText = user.name;
+    authButton.innerText = "Logout";
+
+    authButton.onclick = () => {
+        localStorage.removeItem("isLogin");
+        location.href = "login.html";
+    };
+} else {
+    usernameDisplay.innerText = "Guest";
+    authButton.innerText = "Login";
+
+    authButton.onclick = () => {
+        location.href = "login.html";
+    };
+}
+</script>
+
+
+<script src="darkmode.js"></script>
+
+</body>
+</html>
